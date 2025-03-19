@@ -64,7 +64,7 @@ LocalHost& LocalHost::getInstance(void) {
         const std::vector<LocalHost::InterfaceInfo> infos = LocalHost::queryLocalInterfaceInfos();
         instance->cacheLocalInterfaceInfos(infos);
 
-#if defined(__arm__) && !defined(__APPLE__) && !defined(_WIN32)
+#if 1 //defined(__arm__) && !defined(__APPLE__) && !defined(_WIN32)
         // on raspi getaddrinfo() is broken, use ip addresses from interface inforamation instead;
         // a broken getaddrinfo() returns the local loopback address 127.0.1.1 or 127.0.0.1 but no other ipv4 address
         bool isBrokenGetAddrInfo = true;

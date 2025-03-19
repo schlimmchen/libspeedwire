@@ -60,7 +60,7 @@ namespace libspeedwire {
         SpeedwireData2Packet(const SpeedwireHeader& header) {
             // obtain a pointer to the SMA data2 tag header, there should be exactly one for emeter and inverter packets
             udp = (uint8_t*)header.findTagPacket(SpeedwireTagHeader::sma_tag_data2);
-            offset_from_start_of_speedwire_packet = (unsigned long)(ptrdiff_t)(udp - header.getPacketPointer());
+            offset_from_start_of_speedwire_packet = (unsigned long)(std::ptrdiff_t)(udp - header.getPacketPointer());
         }
 
         /** Destructor. */

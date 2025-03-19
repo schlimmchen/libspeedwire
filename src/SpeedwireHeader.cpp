@@ -279,10 +279,10 @@ const void* SpeedwireHeader::findEodTagPacket(void) const {
 
 /** Check if the entire tag including its payload is contained inside the udp packet. */
 bool SpeedwireHeader::tagPacketFitsIntoUdp(const void* const tag) const {
-    ptrdiff_t payload_offset = (ptrdiff_t)((uint8_t*)tag + SpeedwireTagHeader::TAG_HEADER_LENGTH - udp);
+    std::ptrdiff_t payload_offset = (std::ptrdiff_t)((uint8_t*)tag + SpeedwireTagHeader::TAG_HEADER_LENGTH - udp);
     if (tag != NULL && size >= payload_offset) {
         uint8_t* next_tag = (uint8_t*)tag + SpeedwireTagHeader::getTotalLength(tag);
-        ptrdiff_t next_tag_offset = (ptrdiff_t)(next_tag - udp);
+        std::ptrdiff_t next_tag_offset = (std::ptrdiff_t)(next_tag - udp);
         if (size >= next_tag_offset) {
             return true;
         }
